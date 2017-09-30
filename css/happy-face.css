@@ -1,0 +1,63 @@
+a {
+    cursor: pointer;
+}
+.clearfix {
+    clear: both;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.hv{ float: left; padding: 2px; box-sizing: border-box; }
+.hv:hover{ background: #eee }
+.hv img{ vertical-align: middle; width: 100%; height: 100%; cursor: pointer; }
+.hv-2{ width: 50%; height: 50%; }
+.hv-3{ width: 33.33%; height: 33.33%; }
+.hv-4{ width: 25%; height: 25%; }
+.hv-5{ width: 20%; height: 20%; }
+.hv-6{ width: 16.66%; height: 16.66%; }
+.hv-7{ width: 14.28%; height: 14.28%; }
+.hv-8{ width: 12.125%; height: 12.125%; }
+
+.box-game {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+.process-bar {
+    width: 100%;
+    height: 15px;
+    background: green;
+    border-radius: 10px;
+}
+
+.endGame {
+    display: none;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -15px;
+    left: 0;
+    background: rgba(90,87,87,0.34);
+}
+
+.endGame p {
+    text-transform: uppercase;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 40px;
+}
+
+.endGame p img {
+    height: 133px;
+}
+
+.endGame a {
+    display: inline-block;
+}
+
+.endGame a img {
+    vertical-align: middle;
+    width: 140px;
+    height: 112px;
+}
