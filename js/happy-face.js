@@ -171,3 +171,13 @@ var app = new Vue({
 		}
 	}
 });
+
+//pre load all face img
+(function(){
+	listHappy.forEach((face, index) => {
+		var img = new Image();
+		var img1 = new Image();
+		img.src = face;
+		img1.src = listNeutral[index];
+	});
+})();
