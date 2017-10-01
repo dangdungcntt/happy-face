@@ -28,7 +28,7 @@ a {
 .hv-5{ width: calc(20% - 4px); height: calc(20% - 4px); }
 .hv-6{ width: calc(16.66% - 4px); height: calc(16.66% - 4px); }
 .hv-7{ width: calc(14.28% - 4px); height: calc(14.28% - 4px); }
-.hv-8{ width: calc(12.125% - 4px); height: calc(12.125% - 4px); }
+.hv-8{ width: calc(12.5% - 4px); height: calc(12.5% - 4px); }
 
 .score-container {
     background: url('../img/score.png');
