@@ -15,10 +15,11 @@ var listStage = [
 	{ stage: 13, time: 3100, nBox: 25, cl: 'hv hv-5'},
 	{ stage: 14, time: 2800, nBox: 25, cl: 'hv hv-5'},
 	{ stage: 15, time: 4500, nBox: 36, cl: 'hv hv-6'},
+	{ stage: 16, time: 4250, nBox: 36, cl: 'hv hv-6'},
 	{ stage: 16, time: 4000, nBox: 36, cl: 'hv hv-6'},
 	{ stage: 17, time: 5000, nBox: 49, cl: 'hv hv-7'},
 	{ stage: 18, time: 4500, nBox: 49, cl: 'hv hv-7'},
-	{ stage: 19, time: 5000, nBox: 64, cl: 'hv hv-8'},
+	{ stage: 19, time: 5250, nBox: 64, cl: 'hv hv-8'},
 ],
 listHappy = [
 	'img/happy/angela_happy.png',
@@ -32,9 +33,11 @@ listNeutral = [
 	'img/neutral/ginger_neutral.png',
 	'img/neutral/vet_neutral.png',
 ];
+var best = localStorage.getItem('best_score') || 0;
 var app = new Vue({
 	el: "#app" ,
 	data: {
+		best,
 		cl: '',
 		nBox: 0,
 		listStage,
@@ -45,7 +48,9 @@ var app = new Vue({
 	},
 	created() {
 		this.faceLength = this.listNeutral.length;	//số mặt cười, không cười
-	    this.update(this.listStage[0]);
+		this.update(this.listStage[0]);
+		clearInterval(this.itvTimeout);
+		document.getElementById('welcome').style.display = 'block';
 	},
 	methods: {
 		update({stage, time, nBox, cl}) {
@@ -90,6 +95,7 @@ var app = new Vue({
 				listStage, update, victory, gameOver
 			} = this;
 			if (index === correctIndex) {
+				clearInterval(this.itvTimeout);
 				if (currentStage === listStage.length - 1) //Đến màn cuối
 					return victory();				//show màn hình chiến thắng
 
@@ -102,10 +108,16 @@ var app = new Vue({
 			}
 			gameOver(event.target);
 		},
+		saveBest() {
+			this.best = this.best > this.currentStage ? this.best : this.currentStage;
+			localStorage.setItem('best_score', this.best);
+		},
 		victory() { //thắng
+			this.saveBest();
 			document.getElementById('win').style.display = 'block';	//show màn hình chiến thắng
 		},
 		gameOver(elTarget) { //thua
+			this.saveBest();
 			clearInterval(this.itvTimeout);							//xóa đếm ngược thời gian
 			this.flicker(elTarget);									//nhấp nháy ô chọn sai hoặc là thanh thời gian
 			document.getElementById('gameover').style.display = 'block';	//show màn hình thua
@@ -114,6 +126,7 @@ var app = new Vue({
 		playAgain() { //chơi lại
 			document.getElementById('win').style.display = 'none'; //ẩn màn hình thắng
 			document.getElementById('gameover').style.display = 'none'; //ẩn màn hình thua
+			document.getElementById('welcome').style.display = 'none';
 			//trả lại màu trắng cho ô kết quả vừa mới được tô xanh
 			document.querySelectorAll('.hv img')[this.correctIndex].style.background = 'white'; 
 			//trả lại màu trắng cho ô chọn sai vừa đc tô đỏ

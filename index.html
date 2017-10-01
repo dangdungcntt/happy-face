@@ -2,17 +2,27 @@
 <html lang="vn">
 <head>
 	<title>Happy face</title>
+	<link rel="shortcut icon" href="img/favicon.png">
 	<link rel="stylesheet" href="css/happy-face.css">	
 </head>
 <body>
 	<div class="container" id="app">
+		
+		<div class="score-container">
+			<span class="score">{{currentStage}}</span>
+			<span class="best">{{best > currentStage ? best : currentStage}}</span>
+		</div>
 		<div class="box-game">
 			<div class="game-content clearfix">
 				<div v-for="(num, index) in nBox" v-bind:class="cl">
 					<img v-bind:src="getImage(index)" v-on:click="check(index, $event)" v-el:faceItem>
 				</div>
 			</div>
-			<div id="game-time-out" class="process-bar"></div>
+			
+			<div id="welcome" class="endGame">
+				<p style="margin-top: 37%;"></p>
+				<a><img src="img/play.png" alt="Play" v-on:click="playAgain"></a>
+			</div>
 			<div id="gameover" class="endGame">
 				<p><img src="img/gameover.png" alt="Game over"></p>
 				<a><img src="img/replay.png" alt="Play again" v-on:click="playAgain"></a>
@@ -22,8 +32,9 @@
 				<a><img src="img/replay.png" alt="Play again" v-on:click="playAgain"></a>
 			</div>
 		</div>
+		<div id="game-time-out" class="process-bar"></div>
 	</div>
-	<script type="text/javascript" src="vendor/vue.min.js"></script>
+	<script type="text/javascript" src="js/vue.min.js"></script>
 	<script type="text/javascript" src="js/happy-face.js"></script>
 </body>
 </html>

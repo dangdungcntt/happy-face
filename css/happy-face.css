@@ -1,27 +1,65 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;
+    font-family: Helvetica, sans-serif;
+}
+body {
+    background: #a57dd4;
+}
 a {
     cursor: pointer;
 }
 .clearfix {
-    clear: both;
-    width: 100%;
-    display: block;
     overflow: hidden;
 }
-.hv{ float: left; padding: 2px; box-sizing: border-box; }
+
+.container {
+    width: 450px;
+    margin: 0 auto;
+}
+.hv{ float: left; margin: 2px; border: 4px solid #BEC2C7; border-radius: 10px;}
 .hv:hover{ background: #eee }
-.hv img{ vertical-align: middle; width: 100%; height: 100%; cursor: pointer; }
-.hv-2{ width: 50%; height: 50%; }
-.hv-3{ width: 33.33%; height: 33.33%; }
-.hv-4{ width: 25%; height: 25%; }
-.hv-5{ width: 20%; height: 20%; }
-.hv-6{ width: 16.66%; height: 16.66%; }
-.hv-7{ width: 14.28%; height: 14.28%; }
-.hv-8{ width: 12.125%; height: 12.125%; }
+.hv img{ vertical-align: middle; width: 100%; height: 100%; cursor: pointer; border-radius: 6px;}
+.hv-2{ width: calc(50% - 4px); height: calc(50% - 4px); }
+.hv-3{ width: calc(33.33% - 4px); height: calc(33.33% - 4px); }
+.hv-4{ width: calc(25% - 4px); height: calc(25% - 4px); }
+.hv-5{ width: calc(20% - 4px); height: calc(20% - 4px); }
+.hv-6{ width: calc(16.66% - 4px); height: calc(16.66% - 4px); }
+.hv-7{ width: calc(14.28% - 4px); height: calc(14.28% - 4px); }
+.hv-8{ width: calc(12.125% - 4px); height: calc(12.125% - 4px); }
+
+.score-container {
+    background: url('../img/score.png');
+    height: 30px;
+    width: 450px;
+    margin: 10px 0; 
+    position: relative;
+}
+
+.score-container span {
+    position: absolute;
+    font-weight: bold;
+    font-size: 24px;
+    top: 2px;
+}
+
+.score-container .score {
+    right: 368px;
+}
+
+.score-container .best {
+    right: 245px;
+}
 
 .box-game {
-    width: 400px;
-    height: 400px;
+    background: white;
+    width: 450px;
+    height: 450px;
     position: relative;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .process-bar {
@@ -43,6 +81,8 @@ a {
 }
 
 .endGame p {
+    margin-top: 10%;
+    margin-bottom: 10%;
     text-transform: uppercase;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 40px;
