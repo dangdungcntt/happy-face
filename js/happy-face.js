@@ -16,10 +16,10 @@ var listStage = [
 	{ stage: 14, time: 2800, nBox: 25, cl: 'hv hv-5'},
 	{ stage: 15, time: 4500, nBox: 36, cl: 'hv hv-6'},
 	{ stage: 16, time: 4250, nBox: 36, cl: 'hv hv-6'},
-	{ stage: 16, time: 4000, nBox: 36, cl: 'hv hv-6'},
-	{ stage: 17, time: 5000, nBox: 49, cl: 'hv hv-7'},
-	{ stage: 18, time: 4500, nBox: 49, cl: 'hv hv-7'},
-	{ stage: 19, time: 5250, nBox: 64, cl: 'hv hv-8'},
+	{ stage: 17, time: 4000, nBox: 36, cl: 'hv hv-6'},
+	{ stage: 18, time: 5000, nBox: 49, cl: 'hv hv-7'},
+	{ stage: 19, time: 4500, nBox: 49, cl: 'hv hv-7'},
+	{ stage: 20, time: 5250, nBox: 64, cl: 'hv hv-8'},
 ],
 listHappy = [
 	'img/happy/angela_happy.png',
@@ -152,13 +152,12 @@ var app = new Vue({
 			let elem = document.getElementById(elId); //lấy ra thanh thời gian
 			let width = 100; //đầy thanh thời gian
 			const frame = () => { //hàm được gọi mỗi 10ms
-				if (width <= 0) { //hết thời gian
-					elem.style.width = '0%'; //set 0% tránh trường hợp bị dư 1 chút xíu
-					this.gameOver(elem); //thua
-				} else {
-					width -= 100 / (time / 10); //giảm width xuống để thấy thanh thời gian giảm 
-					elem.style.width = width + '%'; //set width
+				if (width <= -10) {
+					return this.gameOver(elem); //thua
 				}
+				width -= 100 / (time / 10); //giảm width xuống để thấy thanh thời gian giảm 
+				elem.style.width = width <= 0 ? 0 : width + '%'; //set width
+				
 				//màu nền thay đổi theo thời gian con lại
 				var background;
 				if (width < 20) background = '#fe3a27';
